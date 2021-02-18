@@ -1,6 +1,7 @@
 import create_game
 import print_card
 import players
+from click import getchar
 from os import system
 
 
@@ -39,11 +40,22 @@ while True:
             for g in range(1, 14):
                 for j in range(1, 5):
                     if PLAYERS[j - 1].player_type == 'HUMAN':
-                        print(PLAYERS[j - 1].name + '\'s DECK')
-                        print_card.print_deck(PLAYERS[j - 1].deck)
-                        print('PICK A NUMBER TO PLAY A CARD')
-                        number = int(input('NUMBER: '))
-                        PLAYERS[j - 1].deck.pop(number - 1)
+                        pick = 1
+                        while True:
+                            print(PLAYERS[j - 1].name + '\'s DECK')
+                            print()
+                            print('CHOOSE CARDS USING "," and ".". CLICK "/" TO APPROVE')
+                            print()
+                            print_card.print_deck(PLAYERS[j - 1].deck, pick)
+                            card_choice = getchar()
+                            if card_choice == ',' and pick > 1:
+                                pick -= 1
+                            elif card_choice == '.' and pick < len(PLAYERS[j - 1].deck):
+                                pick += 1
+                            elif card_choice == '/':
+                                break
+                            system('clear')
+                        PLAYERS[j - 1].deck.pop(pick - 1)
                         system('clear')
                         print('CLICK TO CONTINUE...')
                         temp = input()
@@ -52,4 +64,5 @@ while True:
     else:
         system('clear')
         break
-    
+
+   
