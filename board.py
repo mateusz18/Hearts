@@ -1,7 +1,7 @@
 from random import shuffle
 
 
-class Card():
+class Card:
     def __init__(self, name, value, suit, priority):
         self.name = name
         self.value = value
@@ -9,7 +9,7 @@ class Card():
         self.priority = priority
 
 
-class Deck():
+class Deck:
     def __init__(self, cards):
         self.cards = cards
     
@@ -23,3 +23,11 @@ class Deck():
             if turn == 5:
                 turn = 1
     
+
+class Table:
+    def __init__(self):
+        self.cards = []
+        self.suit = None
+        self.winner = None
+        self.winning_card = None
+        self.points = 0
