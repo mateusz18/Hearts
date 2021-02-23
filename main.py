@@ -43,6 +43,7 @@ while True:
                 new_table = board.Table()
                 for j in range(1, 5):
                     if PLAYERS[(turn + j - 2) % 4].player_type.upper() == 'HUMAN':
+                        PLAYERS[(turn + j - 2) % 4].sort_deck()
                         pick = 1
                         while True:
                             print(PLAYERS[(turn + j - 2) % 4].name + '\'s DECK')

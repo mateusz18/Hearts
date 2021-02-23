@@ -21,5 +21,3 @@ for name in names.keys():
         cards.append(new_card)
 
 deck = board.Deck(cards)
-
-
